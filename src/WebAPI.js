@@ -1,5 +1,6 @@
 import jsSHA from 'jssha'
 import { locations, types, getLocationValueByName } from './utils.js'
+import { AppID, AppKey } from './config.js'
 const BASE_URL = "https://ptx.transportdata.tw/MOTC/v2/Tourism"
 
 export const getInfos = (top = 4, type = 'ScenicSpot', location, keyword, skip) => {
@@ -21,9 +22,6 @@ export const getSpot = (type, id) => {
 
 
 function getAuthorizationHeader() {
-//  填入自己 ID、KEY 開始
-    let AppID = '4ad9f73726a0409a9376afd2b59e59a7';
-    let AppKey = 'iR-j7mJI1CY924a-xfd6vhXZciM';
 //  填入自己 ID、KEY 結束
     let GMTString = new Date().toGMTString();
     let ShaObj = new jsSHA('SHA-1', 'TEXT');
