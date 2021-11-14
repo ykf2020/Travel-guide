@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/Travel-guide/static/css/main.b06db906.chunk.css",
+    "main.js": "/Travel-guide/static/js/main.26c481bc.chunk.js",
+    "main.js.map": "/Travel-guide/static/js/main.26c481bc.chunk.js.map",
+    "runtime-main.js": "/Travel-guide/static/js/runtime-main.672699dc.js",
+    "runtime-main.js.map": "/Travel-guide/static/js/runtime-main.672699dc.js.map",
+    "static/js/2.946c125b.chunk.js": "/Travel-guide/static/js/2.946c125b.chunk.js",
+    "static/js/2.946c125b.chunk.js.map": "/Travel-guide/static/js/2.946c125b.chunk.js.map",
+    "static/js/3.fe91caad.chunk.js": "/Travel-guide/static/js/3.fe91caad.chunk.js",
+    "static/js/3.fe91caad.chunk.js.map": "/Travel-guide/static/js/3.fe91caad.chunk.js.map",
+    "index.html": "/Travel-guide/index.html",
+    "static/css/main.b06db906.chunk.css.map": "/Travel-guide/static/css/main.b06db906.chunk.css.map",
+    "static/js/2.946c125b.chunk.js.LICENSE.txt": "/Travel-guide/static/js/2.946c125b.chunk.js.LICENSE.txt",
+    "static/media/activity.5fb9bf53.svg": "/Travel-guide/static/media/activity.5fb9bf53.svg",
+    "static/media/arrowdowncircle.902d5f7b.svg": "/Travel-guide/static/media/arrowdowncircle.902d5f7b.svg",
+    "static/media/arrowleft.c75e70df.svg": "/Travel-guide/static/media/arrowleft.c75e70df.svg",
+    "static/media/calling.fb631ffd.svg": "/Travel-guide/static/media/calling.fb631ffd.svg",
+    "static/media/hotel.5ecb7433.svg": "/Travel-guide/static/media/hotel.5ecb7433.svg",
+    "static/media/location.cdd572d4.svg": "/Travel-guide/static/media/location.cdd572d4.svg",
+    "static/media/locationpink.9cb6fa0f.svg": "/Travel-guide/static/media/locationpink.9cb6fa0f.svg",
+    "static/media/logo.eb027c2a.svg": "/Travel-guide/static/media/logo.eb027c2a.svg",
+    "static/media/mainimage.2d3c7073.svg": "/Travel-guide/static/media/mainimage.2d3c7073.svg",
+    "static/media/restaurant.8915f94d.svg": "/Travel-guide/static/media/restaurant.8915f94d.svg",
+    "static/media/scenicspot.6d69922c.svg": "/Travel-guide/static/media/scenicspot.6d69922c.svg",
+    "static/media/search.96e044ef.svg": "/Travel-guide/static/media/search.96e044ef.svg",
+    "static/media/setting.a9fa54ee.svg": "/Travel-guide/static/media/setting.a9fa54ee.svg",
+    "static/media/time.21c0f744.svg": "/Travel-guide/static/media/time.21c0f744.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.672699dc.js",
+    "static/js/2.946c125b.chunk.js",
+    "static/css/main.b06db906.chunk.css",
+    "static/js/main.26c481bc.chunk.js"
+  ]
+}
