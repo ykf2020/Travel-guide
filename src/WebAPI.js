@@ -1,26 +1,13 @@
-import jsSHA from "jssha"
+import jsSHA from 'jssha'
+import { locations, types, getLocationValueByName } from './utils.js'
 const BASE_URL = "https://ptx.transportdata.tw/MOTC/v2/Tourism"
 
-export const getScenicSpots = () => {
-  return fetch(`${BASE_URL}/ScenicSpot?$top=5&$format=JSON`, {
-    headers: getAuthorizationHeader()
-  }).then(res => res.json())
-}
-
-export const getRestaurants = () => {
-  return fetch(`${BASE_URL}/Restaurant?$top=5&$format=JSON`, {
-    headers: getAuthorizationHeader()
-  }).then(res => res.json())
-}
-
-export const getHotels = () => {
-  return fetch(`${BASE_URL}/Hotel?$top=5&$format=JSON`, {
-    headers: getAuthorizationHeader()
-  }).then(res => res.json())
-}
-
-export const getActivities = () => {
-  return fetch(`${BASE_URL}/Activity?$top=5&$format=JSON`, {
+export const getInfos = (top = 4, type = 'ScenicSpot', location, keyword, skip) => {
+  let locationValue = ''
+  if(location) {
+      locationValue = getLocationValueByName(location)
+  }
+  return fetch(`${BASE_URL}/${type}${locationValue ? `/${locationValue}` : ''}?$top=${top}${keyword ? `&$filter=contains(Name%2C'${keyword}')`:'' }${skip ? `&$skip=${skip}`: ''}&$format=JSON`, {
     headers: getAuthorizationHeader()
   }).then(res => res.json())
 }
@@ -30,6 +17,8 @@ export const getSpot = (type, id) => {
     headers: getAuthorizationHeader()
   }).then(res => res.json())
 }
+
+
 
 function getAuthorizationHeader() {
 //  填入自己 ID、KEY 開始

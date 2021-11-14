@@ -18,7 +18,7 @@ const MainContainer =  styled.div`
 function App() {
   const [location, setLocation] = useState('')
   const [keyword, setKeyword] = useState('')
-  const [type, setType] = useState('')
+  const [type, setType] = useState('ScenicSpot')
   return (
     <AuthContext.Provider value={{ location, setLocation, keyword, setKeyword, type, setType }}>
       <MainContainer>

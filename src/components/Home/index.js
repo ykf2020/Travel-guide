@@ -5,7 +5,7 @@ import mainimage from '../../assets/mainimage.svg'
 import locationpink from '../../assets/locationpink.svg'
 import location from '../../assets/location.svg'
 import time from '../../assets/time.svg'
-import { getScenicSpots, getRestaurants, getHotels, getActivities } from '../../WebAPI.js'
+import { getInfos } from '../../WebAPI.js'
 import ScenicSpotCard from '../Cards/ScenicSpotCard.js'
 
 const Container = styled.section`
@@ -156,16 +156,16 @@ const Home = () => {
   const [scenicspots, setScenicspots] = useState([])
 
   useEffect(()=>{
-    getScenicSpots().then(response => {
+    getInfos(4, 'ScenicSpot').then(response => {
       setScenicspots(response)
     })
-    getActivities().then(response => {
+    getInfos(4, 'Activity').then(response => {
       setActivities(response)
     })
-    getRestaurants().then(response => {
+    getInfos(4, 'Restaurant').then(response => {
       setRestaurants(response)
     })
-    getHotels().then(response => {
+    getInfos(4, 'Hotel').then(response => {
       setHotels(response)
     })
   },[])

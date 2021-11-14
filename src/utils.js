@@ -88,3 +88,42 @@ export const locations = [
     value: 'LienchiangCounty'
   },
 ]
+
+export const types = [
+  {
+    name: '熱門景點',
+    value:'ScenicSpot',
+  },
+  {
+    name: '觀光活動',
+    value: 'Activity'
+  },
+  {
+    name: '在地美食',
+    value: 'Restaurant'
+  },
+  {
+    name: '休息住宿',
+    value: 'Hotel'
+  },
+]
+
+export const getLocationValueByName = (name) => {
+  let ans
+  locations.forEach(location => {
+    if(location.name === name){
+      ans = location
+    }
+  })
+  return ans.value
+}
+
+export const getTypeNameByValue = (value) => {
+  let ans
+  types.forEach(type => {
+    if(type.value === value){
+      ans = type
+    }
+  })
+  return ans.name
+}

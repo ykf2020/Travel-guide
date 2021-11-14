@@ -6,7 +6,8 @@ import locationpink from '../../assets/locationpink.svg'
 import location from '../../assets/location.svg'
 import ScenicSpotCard from '../Cards/ScenicSpotCard.js'
 import { AuthContext } from "../../contexts.js";
-import { getScenicSpots, getRestaurants, getHotels, getActivities } from '../../WebAPI.js'
+import { getInfos } from '../../WebAPI.js'
+import { getTypeNameByValue } from '../../utils.js'
 
 const Container = styled.section`
   width: 100%;
@@ -28,7 +29,7 @@ const TitleDesc = styled.h3`
   margin: 0;
   font-size: 23px;
   font-weight: 700;
-  coloe: ${TextPrimary};
+  color: ${TextPrimary};
 `
 const TitleDescHighLight = styled(TitleDesc)`
   color: ${Primary}
@@ -41,15 +42,16 @@ const Search = () => {
   const { location, keyword, type } = useContext(AuthContext)
   const [searchResults, setSearchResults] = useState([])
   const [isMore, setIsMore] = useState(true)
+  const [skip, setSkip] = useState(0)
   useEffect(() => {
-    getScenicSpots().then(response => {
+    getInfos(12, type, location, keyword, skip).then(response => {
       setSearchResults(response)
     })
-  },[])
+  },[location, keyword, type])
   return (
     <Container>
       <TitleDiv>
-        <TitleDesc>嘉義</TitleDesc>
+        <TitleDesc>{keyword ? `含有「${keyword}」，` : ''}{location ? `${location}的` : ''}{getTypeNameByValue(type)}</TitleDesc>
       </TitleDiv>
       {searchResults.map(result => {
         return (

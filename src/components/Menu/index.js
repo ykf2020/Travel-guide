@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react"
 import styled from "styled-components"
 import { BgWhite, BgGray, Line, Primary, Second, Third, TextPrimary, Title, MobileBody1 } from "../../constants.js"
-import { locations } from '../../utils.js'
+import { locations, getLocationValueByName } from '../../utils.js'
 import logo from '../../assets/logo.svg'
 import setting from '../../assets/setting.svg'
 import hotel from '../../assets/hotel.svg'
@@ -244,14 +244,16 @@ const Menu = () => {
   const [isSearchPanelOpen, setIsSearchPanelOpen] = useState(false)
   const [isLocationPanelOpen, setIsLocationPanelOpen] = useState(false)
   const { location, setLocation, keyword, setKeyword, type, setType } = useContext(AuthContext)
-  const handleToggleSearchPanel = (e) => {
-
+  const handleBackToHome = () => {
+    setIsSearchPanelOpen(false)
+    setLocation('')
+    setKeyword('')
   }
   return (
     <>
       <Header>
         <ToggleIcon onClick={() => {setIsSearchPanelOpen(!isSearchPanelOpen)}}><img src={setting}/></ToggleIcon>
-        <Logo to='/' onClick={() => {setIsSearchPanelOpen(false)}}><img src={logo} alt="logo" /></Logo>
+        <Logo to='/' onClick={handleBackToHome}><img src={logo} alt="logo" /></Logo>
       </Header>
       <SearchPanel isSearchPanelOpen={isSearchPanelOpen}>
         <InputDiv onClick={() => {setIsLocationPanelOpen(!isLocationPanelOpen)}}>

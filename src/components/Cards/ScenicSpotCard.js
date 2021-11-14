@@ -17,7 +17,7 @@ const ScenicSpotCard = ({ spot }) => {
       <CardInfosDiv>
         <CardInfo>
           <CardIcon><img src={location}/></CardIcon>
-          <CardInfoDesc>{spot.Address.substring(0,3)}</CardInfoDesc>
+          <CardInfoDesc>{spot.Address?.substring(0,3)}</CardInfoDesc>
         </CardInfo>
         <CardInfo>
           <CardIcon><img src={time}/></CardIcon>
