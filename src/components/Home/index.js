@@ -7,6 +7,7 @@ import location from '../../assets/location.svg'
 import time from '../../assets/time.svg'
 import { getScenicSpots, getRestaurants, getHotels, getActivities } from '../../WebAPI.js'
 import ScenicSpotCard from '../Cards/ScenicSpotCard.js'
+
 const Container = styled.section`
   width: 100%;
   height: 100%;

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import styled from "styled-components"
 import { BgWhite, BgGray, Line, Primary, Second, TextSecond, TextPrimary, H2, H3, Title, MobileBody1, Body2, Shadow } from "../../constants.js"
 import arrowleft from '../../assets/arrowleft.svg'
@@ -7,6 +7,7 @@ import calling from '../../assets/calling.svg'
 import location from '../../assets/location.svg'
 import time from '../../assets/time.svg'
 import { getSpot } from '../../WebAPI.js'
+
 const Container = styled.section`
   width: 100%;
   height: 100%;
@@ -26,7 +27,7 @@ const TitleDesc = styled.h3`
   margin: 0;
 `
 
-const TitleIcon = styled.div`
+const TitleIcon = styled(Link)`
   height: 33.33px;
   width: 33.33px;
   margin: 0 11.33px 0 0;
@@ -117,7 +118,7 @@ const Spot = () => {
   return (
     <Container>
       <TitleDiv>
-        <TitleIcon><img src={arrowleft}/></TitleIcon>
+        <TitleIcon to='/search'><img src={arrowleft}/></TitleIcon>
         <TitleDesc>{spotInfo[0]?.Name}</TitleDesc>
       </TitleDiv>
       <MainImageDiv/>

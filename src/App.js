@@ -22,8 +22,8 @@ function App() {
   return (
     <AuthContext.Provider value={{ location, setLocation, keyword, setKeyword, type, setType }}>
       <MainContainer>
-        <Menu/>
         <Router>
+          <Menu/>
           <Routes>
             <Route exact path='/' element={<Home/>}/>
             <Route path='/search' element={<Search/>}/>

@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { BgWhite, BgGray, Line, Primary, Second, TextSecond, TextPrimary, H2, H3, Title, MobileBody1, Body2, Shadow } from "../../constants.js"
-export const Card = styled.div`
+import { Link } from 'react-router-dom'
+export const Card = styled(Link)`
   width: 100%;
   height: 235px;
   border-radius: 16px;
@@ -10,6 +11,7 @@ export const Card = styled.div`
   margin: 0 0 24px 0;
   display: flex;
   flex-direction: column;
+  text-decoration: none
 `
 
 export const CardImageDiv = styled.div`

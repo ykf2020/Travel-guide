@@ -11,7 +11,7 @@ import time from '../../assets/time.svg'
 import location from '../../assets/location.svg'
 const ScenicSpotCard = ({ spot }) => {
   return (
-    <Card>
+    <Card to={`/spot/ScenicSpot/${spot.ID}`}>
       <CardImageDiv><img src={spot.Picture?.PictureUrl1} alt={spot.Picture?.PictureDescription1} /></CardImageDiv>
       <CardTitle>{spot.Name}</CardTitle>
       <CardInfosDiv>

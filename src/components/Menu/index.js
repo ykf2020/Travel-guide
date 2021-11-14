@@ -1,11 +1,17 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import styled from "styled-components"
-import { BgWhite, BgGray, Line, Primary, Third, TextPrimary, Title, MobileBody1 } from "../../constants.js"
+import { BgWhite, BgGray, Line, Primary, Second, Third, TextPrimary, Title, MobileBody1 } from "../../constants.js"
+import { locations } from '../../utils.js'
 import logo from '../../assets/logo.svg'
 import setting from '../../assets/setting.svg'
+import hotel from '../../assets/hotel.svg'
+import scenicspot from '../../assets/scenicspot.svg'
+import activity from '../../assets/activity.svg'
+import restaurant from '../../assets/restaurant.svg'
 import arrowdowncircle from '../../assets/arrowdowncircle.svg'
 import search from '../../assets/search.svg'
-
+import { Link } from 'react-router-dom'
+import { AuthContext } from "../../contexts.js";
 const Header = styled.div`
   width: 100%;
   height: 56px;
@@ -18,7 +24,7 @@ const Header = styled.div`
   z-index: 10;
 `
 
-const Logo = styled.div`
+const Logo = styled(Link)`
   height: 40px;
   img {
     height: 100%;
@@ -120,7 +126,7 @@ const InputDiv = styled.div`
   }
 `
 
-const SearchButton = styled.button`
+const SearchButton = styled(Link)`
   width: 343px;
   height: 44px;
   background: ${Primary};
@@ -131,6 +137,10 @@ const SearchButton = styled.button`
   bottom: 8px;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration:none;
 `
 
 const LocationPanel = styled.div`
@@ -203,6 +213,11 @@ const TopicDiv = styled.div`
   align-items: center;
   justify-content: center;
   margin-bottom: 12px;
+  ${({active}) =>
+    active && `
+      background: ${Second};
+    `
+  }
 `
 
 const TopicButton = styled.div`
@@ -210,6 +225,13 @@ const TopicButton = styled.div`
   height: 70px;
   border-radius: 50%;
   background: ${Primary};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    max-width: 60%;
+  }
 `
 
 const TopicDesc = styled.p`
@@ -218,26 +240,26 @@ const TopicDesc = styled.p`
   margin: 6px 0 0 0 ;
 `
 
-const array = ['基隆','台北','新北','桃園','新竹','苗栗','台中','彰化','雲林','嘉義','台南','高雄','屏東','台東','花蓮','澎湖','綠島','小琉球','金門', '馬祖']
-
 const Menu = () => {
   const [isSearchPanelOpen, setIsSearchPanelOpen] = useState(false)
   const [isLocationPanelOpen, setIsLocationPanelOpen] = useState(false)
-  const [location, setLocation] = useState('')
-  const [keyword, setKeyword] = useState('')
+  const { location, setLocation, keyword, setKeyword, type, setType } = useContext(AuthContext)
+  const handleToggleSearchPanel = (e) => {
+
+  }
   return (
     <>
       <Header>
         <ToggleIcon onClick={() => {setIsSearchPanelOpen(!isSearchPanelOpen)}}><img src={setting}/></ToggleIcon>
-        <Logo><img src={logo} alt="logo" /></Logo>
+        <Logo to='/' onClick={() => {setIsSearchPanelOpen(false)}}><img src={logo} alt="logo" /></Logo>
       </Header>
       <SearchPanel isSearchPanelOpen={isSearchPanelOpen}>
         <InputDiv onClick={() => {setIsLocationPanelOpen(!isLocationPanelOpen)}}>
           <InputFirst disabled value={location} placeholder="選擇目的地"/>
-          <LocationPanel isLocationPanelOpen={isLocationPanelOpen}>
-            {array.map(arr => {
+          <LocationPanel isLocationPanelOpen={isLocationPanelOpen} onClick={(e)=> e.stopPropagation()}>
+            {locations.map(l => {
               return(
-                <LocationButton onClick={() => {setLocation(arr)}} active={location === arr}>{arr}</LocationButton>
+                <LocationButton onClick={() => {setLocation(l.name)}} active={location === l.name}>{l.name}</LocationButton>
               )
             })}
           </LocationPanel>
@@ -250,25 +272,25 @@ const Menu = () => {
         <TopicSection>
           <TopicTitle>精選主題</TopicTitle>
           <TopicsContainer>
-            <TopicDiv>
-              <TopicButton/>
-              <TopicDesc>歷史文化</TopicDesc>
+            <TopicDiv active={type==='ScenicSpot'} onClick={() => setType('ScenicSpot')}>
+              <TopicButton><img src={scenicspot}/></TopicButton>
+              <TopicDesc>熱門景點</TopicDesc>
             </TopicDiv>
-            <TopicDiv>
-              <TopicButton/>
-              <TopicDesc>歷史文化</TopicDesc>
+            <TopicDiv active={type==='Activity'} onClick={() => setType('Activity')}>
+              <TopicButton><img src={activity}/></TopicButton>
+              <TopicDesc>觀光活動</TopicDesc>
             </TopicDiv>
-            <TopicDiv>
-              <TopicButton/>
-              <TopicDesc>歷史文化</TopicDesc>
+            <TopicDiv active={type==='Restaurant'} onClick={() => setType('Restaurant')}>
+              <TopicButton><img src={restaurant}/></TopicButton>
+              <TopicDesc>在地美食</TopicDesc>
             </TopicDiv>
-            <TopicDiv>
-              <TopicButton/>
-              <TopicDesc>歷史文化</TopicDesc>
+            <TopicDiv active={type==='Hotel'} onClick={() => setType('Hotel')}>
+              <TopicButton><img src={hotel}/></TopicButton>
+              <TopicDesc>休息住宿</TopicDesc>
             </TopicDiv>
           </TopicsContainer>
         </TopicSection>
-        <SearchButton>開始搜尋</SearchButton>
+        <SearchButton to='/search' onClick={() => {setIsSearchPanelOpen(false)}}>開始搜尋</SearchButton>
       </SearchPanel>
     </>
   )
